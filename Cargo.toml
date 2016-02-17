@@ -1,0 +1,10 @@
+[package]
+name = "blog"
+version = "0.1.0"
+authors = ["Bryan Mytko <bryanmytko@gmail.com>"]
+
+[dependencies.iron]
+version = "*"
+
+[dependencies]
+router = "*"
