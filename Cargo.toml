@@ -9,6 +9,6 @@ version = "*"
 [dependencies]
 router = "*"
 
-/* [[bin]] */
-/* name = "server" */
-/* path = "app/server.rs" */
+[[bin]]
+name = "server"
+path = "app/server.rs"
