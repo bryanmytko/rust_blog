@@ -17,10 +17,5 @@ pub mod views;
 pub mod controllers;
 
 fn main() {
-    //Iron::new(config::routes::routes()).http("localhost:3000").unwrap();
-
-    let name = "Lyra";
-    html_utf8!(io::stdout(), {
-        p { "Hi, " $name "!" }
-    }).unwrap();
+    Iron::new(config::routes::routes()).http("localhost:3000").unwrap();
 }
