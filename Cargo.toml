@@ -8,6 +8,7 @@ version = "*"
 
 [dependencies]
 router = "*"
+rustc-serialize = "0.3"
 
 [[bin]]
 name = "server"
