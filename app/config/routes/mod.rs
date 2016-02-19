@@ -9,6 +9,5 @@ pub fn routes() -> Router {
         get "/" => root,
         get "/posts" => posts_controller::index,
         get "/posts/:id" => posts_controller::show
-        // post "/" => postHandler
     )
 }
