@@ -1,0 +1,5 @@
+body { font-family: "Helvetica", "Arial", sans-serif; background: #ccffcc; font-size: 1.3em; line-height: 1.6em }
+div.main-container { width: 960px; margin: 0 auto; padding: 30px 0 }
+h1 { color: #FF395B }
+em { font-size: .9em; font-weight: bold; font-style: normal }
+a { color: #077507; text-decoration: none }

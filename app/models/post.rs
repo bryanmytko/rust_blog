@@ -4,6 +4,7 @@ use std::fmt;
 pub struct Post {
     id: i64,
     pub author: String,
+    pub date: String,
     pub title: String,
     pub content: String
 }
@@ -17,8 +18,9 @@ impl fmt::Display for Post {
 impl Post {
     pub fn get_by_id(id: i64) -> Post {
         Post {
-            id: 1,
+            id: id,
             author: "Bryan Mytko".to_string(),
+            date: "February 19, 2016".to_string(),
             title: "Cat Ipsum".to_string(),
             content: "Instantly break out into full speed gallop across the house for no reason run
             in circles ignore the squirrels, you'll never catch them anyway chew on cable so ears

@@ -6,7 +6,19 @@ use iron::mime::Mime;
 use models::post;
 use views::posts;
 
+pub fn parse_id(req: &mut Request) -> i64 {
+    req.extensions
+        .get::<Router>()
+        .unwrap()
+        .find("id")
+        .unwrap()
+        .parse::<i64>()
+        .unwrap()
+}
+
 pub fn index(_: &mut Request) -> IronResult<Response> {
+    // get all... ? let post = post::Post::get_by_id(*id);
+
     Ok(Response::with((
         status::Ok,
         "text/html".parse::<Mime>().unwrap(),
@@ -15,7 +27,7 @@ pub fn index(_: &mut Request) -> IronResult<Response> {
 }
 
 pub fn show(req: &mut Request) -> IronResult<Response> {
-    let ref id = req.extensions.get::<Router>().unwrap().find("id").unwrap().parse::<i64>().unwrap();
+    let ref id = parse_id(req);
     let post = post::Post::get_by_id(*id);
 
     Ok(Response::with((

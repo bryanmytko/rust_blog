@@ -1,16 +1,16 @@
 use iron::{Response, Request, IronResult};
 use iron::status;
-use router::Router;
 
 use iron::mime::Mime;
 
 pub mod posts_controller;
+use views::layouts;
 
 pub fn root(_: &mut Request) -> IronResult<Response> {
     Ok(Response::with((
         status::Ok,
         html_mime_type(),
-        format!("<h1>Home Page</h1>")
+        layouts::default("<h1>Homepage</h1><a href=\"/posts\">See Posts &#xbb;</a>".to_string())
     )))
 }
 
