@@ -22,7 +22,7 @@ pub mod views;
 pub mod controllers;
 pub mod db;
 
-const DB_NAME: &'static str = "./blog.sql";
+const DB_NAME: &'static str = "./app/db/blog.sql";
 
 fn main() {
     // let sqlite_path = Path::new("./blog.sql");
