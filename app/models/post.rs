@@ -13,6 +13,7 @@ pub struct Post {
 impl Post {
     pub fn find(id: i64) -> Post {
         let conn = db::connection();
+
         conn.query_row("SELECT * FROM post WHERE id=$1", &[&id], |row| {
             Post {
                 id: row.get(0),
@@ -30,7 +31,6 @@ impl Post {
         let mut stmt = conn.prepare("SELECT * FROM post").unwrap();
         let mut rows = stmt.query(&[]).unwrap();
         let mut posts = Vec::new();
-
 
         for mut row in rows {
             let row = row.unwrap();
