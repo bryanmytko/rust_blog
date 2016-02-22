@@ -1,12 +1,19 @@
 use models::post;
 use views::layouts;
+use maud::PreEscaped;
 
-pub fn index(posts: post::Post) -> String {
+pub fn index(posts: Vec<post::Post>) -> String {
   let mut buffer = String::new();
 
   html!(buffer, {
       h2 { "Posts" }
-      p { "All posts will go here." ^posts }
+      ul {
+          @for post in posts {
+              li {
+                  ^PreEscaped(format!("<a href=\"/posts/{}\">{}</a>", post.id, post.title))
+              }
+          }
+      }
   }).unwrap();
 
   layouts::default(buffer)
