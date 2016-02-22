@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: "Helvetica", "Arial", sans-serif;
   background: #ccffcc;
@@ -7,7 +11,7 @@ body {
   margin: 0;
 }
 
-nav, footer { background: #000; width: 100%; padding: 6px }
+nav, footer { background: #000; width: 100%; padding: 6px 0 }
 nav .container, footer .container { width: 960px; margin: 0 auto }
 nav ul { list-style-type: none; margin: 0; text-align: right }
 nav ul li { display: inline-block; margin: 0 6px }
@@ -16,10 +20,41 @@ footer { font-size: .7em; color: #fff; text-align: right }
 footer span { color: #ff395b }
 footer a { color: #fff; }
 
-div.main-container { width: 960px; margin: 0 auto; padding: 30px 0 }
-div.entry { padding-top: 30px }
+div.main-container {
+  width: 960px;
+  margin: 0 auto;
+  padding: 30px 0;
+  position: relative;
+  min-height: 100%;
+  margin-top: -119px;
+  margin-bottom: -60px;
+}
 
-h1 { font-family: "Roboto Condensed", "Helvetica", "Arial", sans-serif; color: #000; font-size: 120px; text-align: center }
+div.main-container:after {
+  content: "";
+  display: block;
+}
+
+footer, div.main-container:after {
+  height: 60px;
+}
+
+div.entry { padding-top: 60px }
+div.entry ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+h1 {
+  font-family: "Roboto Condensed", "Helvetica", "Arial", sans-serif;
+  color: #000;
+  font-size: 120px;
+  text-align: center;
+  margin-top: 180px;
+}
+
+h1 a { color: #000; text-decoration: none }
 h2 { font-family: "Roboto Condensed", "Helvetica", "Arial", sans-serif; color: #FF395B }
 em { font-size: .9em; font-weight: bold; font-style: normal }
-a { color: #077507; text-decoration: none }
+a { color: #000; text-decoration: none }
