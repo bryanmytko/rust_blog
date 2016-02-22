@@ -5,8 +5,10 @@ use router::Router;
 use controllers::*;
 
 pub fn routes() -> Router {
+    // get "/" => root,
+
     router!(
-        get "/" => root,
+        get "/" => posts_controller::index,
         get "/posts" => posts_controller::index,
         get "/posts/:id" => posts_controller::show
     )
