@@ -30,7 +30,7 @@ pub fn default(template: String) -> String {
                     }
                 }
                 div class="main-container" {
-                    h1 "bryanmytko.com"
+                    h1 { a href="/" "bryanmytko.com" }
                     div class="entry" {
                         ^PreEscaped(template)
                     }
