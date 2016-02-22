@@ -25,9 +25,6 @@ pub mod db;
 const DB_NAME: &'static str = "./app/db/blog.sql";
 
 fn main() {
-    // let sqlite_path = Path::new("./blog.sql");
-    // let conn = Connection::open(sqlite_path).unwrap();
-
     let mut mount = Mount::new();
 
     mount
