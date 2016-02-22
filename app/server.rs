@@ -15,34 +15,18 @@ use iron::prelude::*;
 use staticfile::Static;
 use mount::Mount;
 use std::path::Path;
-use rusqlite::Connection;
 
 pub mod config;
 pub mod models;
 pub mod views;
 pub mod controllers;
+pub mod db;
+
+const DB_NAME: &'static str = "./blog.sql";
 
 fn main() {
-    let conn = Connection::open_in_memory().unwrap();
-
-    conn.execute(
-    "CREATE TABLE person (
-        id              INTEGER PRIMARY KEY,
-        name            TEXT NOT NULL,
-        time_created    TEXT NOT NULL,
-        data
-        BLOB
-    )", &[]).unwrap();
-
-
-
-
-
-
-
-
-
-
+    // let sqlite_path = Path::new("./blog.sql");
+    // let conn = Connection::open(sqlite_path).unwrap();
 
     let mut mount = Mount::new();
 

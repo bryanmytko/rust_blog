@@ -1,3 +1,5 @@
+use db;
+
 use router::Router;
 use iron::{Response, Request, IronResult};
 use iron::status;
@@ -17,7 +19,9 @@ pub fn parse_id(req: &mut Request) -> i64 {
 }
 
 pub fn index(_: &mut Request) -> IronResult<Response> {
-    // get all... ? let post = post::Post::get_by_id(*id);
+    let conn = db::connection();
+    let posts = conn.prepare("SELECT * FROM person").unwrap();
+    println!("{:?}", posts);
 
     Ok(Response::with((
         status::Ok,
