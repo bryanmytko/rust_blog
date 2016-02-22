@@ -1,5 +1,25 @@
-body { font-family: "Helvetica", "Arial", sans-serif; background: #ccffcc; font-size: 1.3em; line-height: 1.6em }
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  background: #ccffcc;
+  font-size: 1.3em;
+  line-height: 1.6em;
+  padding: 0;
+  margin: 0;
+}
+
+nav, footer { background: #000; width: 100%; padding: 6px }
+nav .container, footer .container { width: 960px; margin: 0 auto }
+nav ul { list-style-type: none; margin: 0; text-align: right }
+nav ul li { display: inline-block; margin: 0 6px }
+nav ul li a { color: #fff; font-size: .7em }
+footer { font-size: .7em; color: #fff; text-align: right }
+footer span { color: #ff395b }
+footer a { color: #fff; }
+
 div.main-container { width: 960px; margin: 0 auto; padding: 30px 0 }
-h1 { color: #FF395B }
+div.entry { padding-top: 30px }
+
+h1 { font-family: "Roboto Condensed", "Helvetica", "Arial", sans-serif; color: #000; font-size: 120px; text-align: center }
+h2 { font-family: "Roboto Condensed", "Helvetica", "Arial", sans-serif; color: #FF395B }
 em { font-size: .9em; font-weight: bold; font-style: normal }
 a { color: #077507; text-decoration: none }
