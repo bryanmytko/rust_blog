@@ -20,19 +20,18 @@ pub fn parse_id(req: &mut Request) -> i64 {
 
 pub fn index(_: &mut Request) -> IronResult<Response> {
     let conn = db::connection();
-    let posts = conn.prepare("SELECT * FROM person").unwrap();
-    println!("{:?}", posts);
+    let posts = post::Post::all();
 
     Ok(Response::with((
         status::Ok,
         "text/html".parse::<Mime>().unwrap(),
-        posts::index()
+        posts::index(posts)
     )))
 }
 
 pub fn show(req: &mut Request) -> IronResult<Response> {
     let ref id = parse_id(req);
-    let post = post::Post::get_by_id(*id);
+    let post = post::Post::find(*id);
 
     Ok(Response::with((
         status::Ok,
