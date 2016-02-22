@@ -1,3 +1,4 @@
+use db;
 use std::fmt;
 
 #[derive(RustcEncodable, RustcDecodable)]
@@ -16,22 +17,32 @@ impl fmt::Display for Post {
 }
 
 impl Post {
-    pub fn get_by_id(id: i64) -> Post {
-        Post {
-            id: id,
-            author: "Bryan Mytko".to_string(),
-            date: "February 19, 2016".to_string(),
-            title: "Cat Ipsum".to_string(),
-            content: "Instantly break out into full speed gallop across the house for no reason run
-            in circles ignore the squirrels, you'll never catch them anyway chew on cable so ears
-            back wide eyed attack dog, run away and pretend to be victim. Chew on cable plan steps
-            for world domination but hide head under blanket so no one can see yet favor packaging
-                over toy, so give attitude, play riveting piece on synthesizer keyboard. Sleep nap
-                    chase the pig around the house. Hack up furballs favor packaging over toy has
-                    closed eyes but still sees you. Lick yarn hanging out of own butt. Vommit food
-                    and eat it again hunt anything that moves leave hair everywhere, but destroy
-                    couch as revenge yet stare out the window paw at your fat belly. Stare at
-                    ceiling. Poop in the plant pot chase imaginary bugs.".to_string()
-        }
+    pub fn find(id: i64) -> Post {
+        let conn = db::connection();
+        conn.query_row("SELECT * FROM post WHERE id=1", &[], |row| {
+            Post {
+                id: row.get(0),
+                author: row.get(1),
+                date: row.get(2),
+                content: row.get(3),
+                title: row.get(4)
+            }
+        }).unwrap()
+    }
+
+    pub fn all() -> Post {
+        // let mut person_iter = stmt.query_map(&[], |row| {
+        //     Person {
+        //         id: row.get(0),
+        //         name: row.get(1),
+        //         time_created: row.get(2),
+        //         data: row.get(3)
+        //     }
+        // }).unwrap();
+
+      let conn = db::connection();
+      let posts = conn.prepare("SELECT * FROM post").unwrap();
+      Post { id: 1, author: "a".to_string(), date: "a".to_string(), title: "asdf".to_string(), content: "asdf".to_string() }
+
     }
 }
