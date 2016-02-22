@@ -1,12 +1,12 @@
 use models::post;
 use views::layouts;
 
-pub fn index() -> String {
+pub fn index(posts: post::Post) -> String {
   let mut buffer = String::new();
 
   html!(buffer, {
       h1 { "Posts" }
-      p { "All posts will go here." }
+      p { "All posts will go here." ^posts }
   }).unwrap();
 
   layouts::default(buffer)
