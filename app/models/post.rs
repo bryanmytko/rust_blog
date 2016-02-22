@@ -3,7 +3,7 @@ use std::fmt;
 
 #[derive(RustcEncodable, RustcDecodable)]
 pub struct Post {
-    id: i64,
+    pub id: i64,
     pub author: String,
     pub date: String,
     pub title: String,
@@ -13,7 +13,7 @@ pub struct Post {
 impl Post {
     pub fn find(id: i64) -> Post {
         let conn = db::connection();
-        conn.query_row("SELECT * FROM post WHERE id=1", &[], |row| {
+        conn.query_row("SELECT * FROM post WHERE id=$1", &[&id], |row| {
             Post {
                 id: row.get(0),
                 author: row.get(1),
