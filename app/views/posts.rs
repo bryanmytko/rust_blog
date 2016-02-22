@@ -5,7 +5,7 @@ pub fn index(posts: post::Post) -> String {
   let mut buffer = String::new();
 
   html!(buffer, {
-      h1 { "Posts" }
+      h2 { "Posts" }
       p { "All posts will go here." ^posts }
   }).unwrap();
 
@@ -16,7 +16,7 @@ pub fn show(post: post::Post) -> String {
   let mut buffer = String::new();
 
   html!(buffer, {
-      h1 { ^post.title }
+      h2 { ^post.title }
       em { ^post.date }
       p  { ^post.content }
   }).unwrap();
