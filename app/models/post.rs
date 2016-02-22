@@ -10,12 +10,6 @@ pub struct Post {
     pub content: String
 }
 
-impl fmt::Display for Post {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{}", self)
-    }
-}
-
 impl Post {
     pub fn find(id: i64) -> Post {
         let conn = db::connection();
@@ -30,19 +24,27 @@ impl Post {
         }).unwrap()
     }
 
-    pub fn all() -> Post {
-        // let mut person_iter = stmt.query_map(&[], |row| {
-        //     Person {
-        //         id: row.get(0),
-        //         name: row.get(1),
-        //         time_created: row.get(2),
-        //         data: row.get(3)
-        //     }
-        // }).unwrap();
+    pub fn all() -> Vec<Post> {
+        let conn = db::connection();
 
-      let conn = db::connection();
-      let posts = conn.prepare("SELECT * FROM post").unwrap();
-      Post { id: 1, author: "a".to_string(), date: "a".to_string(), title: "asdf".to_string(), content: "asdf".to_string() }
+        let mut stmt = conn.prepare("SELECT * FROM post").unwrap();
+        let mut rows = stmt.query(&[]).unwrap();
+        let mut posts = Vec::new();
 
+
+        for mut row in rows {
+            let row = row.unwrap();
+            posts.push(
+                Post {
+                    id: row.get(0),
+                    author: row.get(1),
+                    date: row.get(2),
+                    content: row.get(3),
+                    title: row.get(4)
+                }
+            );
+        }
+
+        posts
     }
 }
