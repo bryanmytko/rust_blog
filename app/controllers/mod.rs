@@ -7,6 +7,7 @@ pub use views::*;
 pub use models::post::*;
 
 pub mod posts_controller;
+pub mod about_controller;
 
 pub fn root(_: &mut Request) -> IronResult<Response> {
     Ok(Response::with((

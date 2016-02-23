@@ -1,3 +1,5 @@
+use controllers::*;
+
 pub fn index(_: &mut Request) -> IronResult<Response> {
     Ok(Response::with((
         status::Ok,
