@@ -1,12 +1,4 @@
-use db;
-
-use router::Router;
-use iron::{Response, Request, IronResult};
-use iron::status;
-use iron::mime::Mime;
-
-use models::post;
-use views::posts;
+use controllers::*;
 
 pub fn parse_id(req: &mut Request) -> i64 {
     req.extensions
@@ -19,8 +11,7 @@ pub fn parse_id(req: &mut Request) -> i64 {
 }
 
 pub fn index(_: &mut Request) -> IronResult<Response> {
-    let conn = db::connection();
-    let posts = post::Post::all();
+    let posts = Post::all();
 
     Ok(Response::with((
         status::Ok,
@@ -31,7 +22,7 @@ pub fn index(_: &mut Request) -> IronResult<Response> {
 
 pub fn show(req: &mut Request) -> IronResult<Response> {
     let ref id = parse_id(req);
-    let post = post::Post::find(*id);
+    let post = Post::find(*id);
 
     Ok(Response::with((
         status::Ok,

@@ -1,10 +1,12 @@
-use iron::{Response, Request, IronResult};
-use iron::status;
+pub use iron::{Response, Request, IronResult};
+pub use iron::status;
+pub use router::Router;
+pub use iron::mime::Mime;
 
-use iron::mime::Mime;
+pub use views::*;
+pub use models::post::*;
 
 pub mod posts_controller;
-use views::layouts;
 
 pub fn root(_: &mut Request) -> IronResult<Response> {
     Ok(Response::with((
