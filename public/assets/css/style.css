@@ -25,6 +25,7 @@ div.main-container {
   margin: 0 auto;
   padding: 30px 0;
   position: relative;
+  top: 180px;
   min-height: 100%;
   margin-top: -119px;
   margin-bottom: -60px;
@@ -51,7 +52,6 @@ h1 {
   color: #000;
   font-size: 120px;
   text-align: center;
-  margin-top: 180px;
 }
 
 h1 a { color: #000; text-decoration: none }
