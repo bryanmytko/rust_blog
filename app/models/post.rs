@@ -1,7 +1,5 @@
 use db;
-use std::fmt;
 
-#[derive(RustcEncodable, RustcDecodable)]
 pub struct Post {
     pub id: i64,
     pub author: String,
@@ -28,11 +26,11 @@ impl Post {
     pub fn all() -> Vec<Post> {
         let conn = db::connection();
 
-        let mut stmt = conn.prepare("SELECT * FROM post").unwrap();
-        let mut rows = stmt.query(&[]).unwrap();
         let mut posts = Vec::new();
+        let mut stmt = conn.prepare("SELECT * FROM post").unwrap();
+        let rows = stmt.query(&[]).unwrap();
 
-        for mut row in rows {
+        for row in rows {
             let row = row.unwrap();
             posts.push(
                 Post {
