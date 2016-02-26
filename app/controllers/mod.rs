@@ -5,6 +5,7 @@ pub use iron::mime::Mime;
 
 pub use views::*;
 pub use models::post::*;
+pub use models::user::*;
 
 pub mod posts_controller;
 pub mod about_controller;
