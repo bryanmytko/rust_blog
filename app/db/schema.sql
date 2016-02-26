@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS post;
+
+CREATE TABLE post (
+  id INTEGER PRIMARY KEY,
+  author TEXT NOT NULL,
+  date TEXT NOT NULL,
+  content TEXT NOT NULL,
+  title TEXT NOT NULL
+);
+
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  password_digest VARCHAR(255) NOT NULL,
+  admin BOOLEAN NOT NULL DEFAULT false
+);
